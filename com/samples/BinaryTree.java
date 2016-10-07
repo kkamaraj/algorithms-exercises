@@ -148,6 +148,17 @@ public class BinaryTree {
         }
     }
 
+    public boolean findNode(int val) {
+        return dfs(root, val);
+    }
+
+    private boolean dfs(Node root, int val) {
+        if (root == null) return false;
+
+        if (root.val == val) return true;
+        return (dfs(root.left, val) || dfs(root.right, val));
+    }
+
 
     public static void main(String args[]) {
         BinaryTree tree = new BinaryTree();
@@ -164,5 +175,7 @@ public class BinaryTree {
         System.out.println("\n" + tree.size());
         System.out.println("isBST: " + tree.isBST());
         tree.printLevelOrder();
+        System.out.println("Found: " + tree.findNode(5));
+        System.out.println("Found: " + tree.findNode(34));
     }
 }
